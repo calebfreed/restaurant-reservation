@@ -1,16 +1,21 @@
-const router = require('express').Router({ mergeParams: true });
-const controller = require('./tables.controller');
-const methodNotAllowed = require('../errors/methodNotAllowed');
+/**
+ * Defines the router for reservation resources.
+ *
+ * @type {Router}
+ */
+const methodNotAllowed = require("../errors/methodNotAllowed");
+const router = require("express").Router();
+const seatRouter = require('../seat/seat.router')
+const controller = require("./tables.controller");
 
 router
-  .route('/:table_id/seat')
-  .put(controller.update)
-  .delete(controller.finish)
+  .route("/")
+  .get(controller.list)
+  .post(controller.create)
   .all(methodNotAllowed);
 router
-  .route('/')
-  .post(controller.create)
-  .get(controller.list)
-  .all(methodNotAllowed);
+  .use('/:tableId/seat', controller.tableExists, seatRouter)
+
 
 module.exports = router;
+ 

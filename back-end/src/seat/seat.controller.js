@@ -1,5 +1,5 @@
 const service = require("./seat.service");
-const hasProperties = require("../errors/hasValidProperties");
+const hasProperties = require("../errors/hasProperties");
 const hasValidProperties = require("../errors/hasValidProperties");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
@@ -29,6 +29,7 @@ function checkOccupiedBeforeSeating(req, res, next) {
   }
 }
 
+//Check table capacity will fit people in reservation
 function checkCapacity(req, res, next) {
   const { table, reservation } = res.locals;
   table.capacity < reservation.people
@@ -45,7 +46,11 @@ function reservationIsNotSeated(req, res, next) {
     ? next()
     : next({ status: 400, message: "reservation is already seated" });
 }
+/***************************************************************/
 
+/**
+ * Update handler for tables resources
+ */
 async function update(req, res, next) {
   const { reservation_id } = req.body.data;
   const updatedTable = {

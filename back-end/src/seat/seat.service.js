@@ -3,8 +3,6 @@ const { read } = require("../reservations/reservations.service");
 const { updateStatus } = require("../reservations/reservations.service");
 var types = require("pg").types;
 
-// types.setTypeParser(types.builtins.INT8, (val) => parseInt(val, 10));
-
 const readReservationId = read;
 
 const updateReservationStatus = updateStatus;
