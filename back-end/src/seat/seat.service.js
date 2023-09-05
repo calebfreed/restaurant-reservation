@@ -1,60 +1,20 @@
 const knex = require("../db/connection");
-const { read } = require("../reservations/reservations.service");
-const { updateStatus } = require("../reservations/reservations.service");
-var types = require("pg").types;
 
-const readReservationId = read;
+function update(table_id, reservation_id) {
+  return knex.transaction(async (transaction) => {
+    await knex("reservations")
+      .select("*")
+      .where({ reservation_id })
+      .update({ status: "seated" })
+      .transacting(transaction);
 
-const updateReservationStatus = updateStatus;
-
-function update(updatedTable) {
-  return knex("tables")
-    .select("*")
-    .where({ table_id: updatedTable.table_id })
-    .update(updatedTable, "*")
-    .then((data) => data[0]);
-}
-
-function unassignReservation(tableId) {
-  return knex("tables")
-    .select("*")
-    .where({ table_id: tableId })
-    .update({ reservation_id: null }, "*")
-    .then((data) => data[0]);
-}
-
-function seatReservationAtTable(updatedTable, reservationId) {
-  return knex.transaction((t) => {
-    knex("tables")
-      .transacting(t)
-      .then(update(updatedTable))
-      .then(updateReservationStatus(reservationId, "seated"))
-      .then(readReservationId(reservationId))
-      .then(t.commit)
-      .catch(function (e) {
-        t.rollback();
-        throw e;
-      });
+    return knex("tables")
+      .select("*")
+      .where({ table_id: table_id })
+      .update({ reservation_id })
+      .transacting(transaction)
+      .then((updated) => updated[0]);
   });
 }
 
-function finishSeatReservation(tableId, reservationId) {
-  return knex.transaction((t) => {
-    knex("tables")
-      .transacting(t)
-      .then(unassignReservation(tableId))
-      .then(updateReservationStatus(reservationId, "finished"))
-      .then(t.commit)
-      .catch(function (e) {
-        t.rollback();
-        throw e;
-      });
-  });
-}
-
-module.exports = {
-  update,
-  readReservationId,
-  seatReservationAtTable,
-  finishSeatReservation,
-};
+module.exports = { update };
