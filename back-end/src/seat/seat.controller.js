@@ -1,4 +1,4 @@
-// Import required modules
+// Import required modules and error handlers
 const service = require("./seat.service");
 const reservationService = require("../reservations/reservations.service");
 const tableService = require("../tables/tables.service");

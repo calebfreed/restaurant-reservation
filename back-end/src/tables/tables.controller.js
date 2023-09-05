@@ -1,4 +1,4 @@
-// Import required modules
+// Import required modules and error handlers
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const service = require("./tables.service");
 
