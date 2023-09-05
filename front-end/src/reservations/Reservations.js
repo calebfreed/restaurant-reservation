@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { createReservation } from "../utils/api";
+import { isNotOnTuesday } from "../utils/date-time";
+import { isInTheFuture } from "../utils/date-time";
+import ErrorAlert from "../layout/ErrorAlert";
 import Form from "./Form";
-
-import { createReservation } from "../utils/api"
 
 export default function Reservations() {
   const history = useHistory();
-
+  const [reservationsError, setReservationsError] = useState(null);
   const initialFormData = {
     first_name: "",
     last_name: "",
@@ -29,16 +32,24 @@ export default function Reservations() {
     isInTheFuture(date, errors);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const controller = new AbortController()
-    async function newRes() {
-        setFormData({ ...initialFormState });
-        const { id } = await createReservation(formData)
-        console.log(id)
-        history.push(`/dashboard?date=${date}`);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const controller = new AbortController();
+    const errors = [];
+    findErrors(formData.reservation_date, errors);
+    if (errors.length) {
+      setReservationsError({ message: errors });
+      return;
     }
-    newRes()
+    try {
+      formData.people = Number(formData.people);
+      await createReservation(formData, controller.signal);
+      const date = formData.reservation_date;
+      history.push(`/dashboard?date=${date}`);
+    } catch (error) {
+      setReservationsError(error);
+    }
+    return () => controller.abort();
   };
 
   return (
