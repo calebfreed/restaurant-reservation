@@ -1,8 +1,12 @@
+// Import required modules
 const service = require("./seat.service");
 const reservationService = require("../reservations/reservations.service");
 const tableService = require("../tables/tables.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
+// Validation Middleware
+
+// Check if the request body has a reservation_id property
 function hasReservationId(req, res, next) {
   const table = req.body.data;
   if (!table) {
@@ -14,7 +18,8 @@ function hasReservationId(req, res, next) {
   next();
 }
 
-function isAlreadySeated(req, res, next) {
+// Check if the reservation is already seated
+function isSeated(req, res, next) {
   const { status } = res.locals.reservation;
   if (status === "seated") {
     return next({ status: 400, message: "Reservation is already seated" });
@@ -22,6 +27,7 @@ function isAlreadySeated(req, res, next) {
   next();
 }
 
+// Check if the reservation with the given reservation_id exists
 async function reservationExists(req, res, next) {
   const { reservation_id } = req.body.data;
   const reservation = await reservationService.read(reservation_id);
@@ -32,6 +38,7 @@ async function reservationExists(req, res, next) {
   next();
 }
 
+// Check if the table is valid for the reservation
 async function tableIsValid(req, res, next) {
   const { table_id } = req.params;
   const currentTable = await tableService.read(table_id);
@@ -50,7 +57,8 @@ async function tableIsValid(req, res, next) {
   next();
 }
 
-async function tableIsOccupied(req, res, next) {
+// Check if the table is already occupied
+async function tableOccupied(req, res, next) {
   const { table_id } = req.params;
   const table = await tableService.read(table_id);
   if (!table) {
@@ -63,7 +71,9 @@ async function tableIsOccupied(req, res, next) {
   next();
 }
 
-//CRUD
+// CRUD Functions
+
+// Update the table with a reservation_id
 async function update(req, res, next) {
   const { reservation_id } = req.body.data;
   const { table_id } = req.params;
@@ -71,6 +81,7 @@ async function update(req, res, next) {
   res.status(200).json({ data: reservation_id });
 }
 
+// Unassign a table and finish the reservation
 async function unassign(req, res, next) {
   const { table_id } = req.params;
   const reservation = await reservationService.finish(
@@ -80,13 +91,15 @@ async function unassign(req, res, next) {
   res.json({ data: table });
 }
 
+// Export Middleware and CRUD Functions
+
 module.exports = {
   update: [
     hasReservationId,
     asyncErrorBoundary(reservationExists),
-    isAlreadySeated,
+    isSeated,
     asyncErrorBoundary(tableIsValid),
     asyncErrorBoundary(update),
   ],
-  unassign: [asyncErrorBoundary(tableIsOccupied), asyncErrorBoundary(unassign)],
+  unassign: [asyncErrorBoundary(tableOccupied), asyncErrorBoundary(unassign)],
 };

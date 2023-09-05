@@ -64,7 +64,7 @@ function modify(reservation_id, reservation) { // Function to modify an existing
     .then((updated) => updated[0]); // Extract the first item from the result (modified reservation).
 }
 
-module.exports = { // Export all the functions for use in other parts of the application.
+module.exports = {
   list,
   create,
   listByDate,

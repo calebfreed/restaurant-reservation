@@ -10,6 +10,7 @@ const errorHandler = require('./errors/errorHandler');
 const notFound = require('./errors/notFound');
 const reservationsRouter = require('./reservations/reservations.router');
 const tablesRouter = require('./tables/tables.router');
+const seatsRouter = require('./seat/seat.router');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.options('*', cors());
 
 app.use('/tables', tablesRouter);
 app.use('/reservations', reservationsRouter);
+app.use('/seats', seatsRouter)
 
 app.use(notFound);
 app.use(errorHandler);
