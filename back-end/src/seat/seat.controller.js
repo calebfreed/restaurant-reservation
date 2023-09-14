@@ -1,10 +1,7 @@
-// Import required modules and error handlers
 const service = require("./seat.service");
 const reservationService = require("../reservations/reservations.service");
 const tableService = require("../tables/tables.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-
-// Validation Middleware
 
 // Check if the request body has a reservation_id property
 function hasReservationId(req, res, next) {

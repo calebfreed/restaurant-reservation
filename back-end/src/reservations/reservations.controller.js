@@ -1,8 +1,8 @@
-//Import proper services and error handling
-const asyncErrorBoundary = require("../errors/asyncErrorBoundary"); // Middleware for handling asynchronous errors.
-const service = require("./reservations.service"); // Import service for reservation management.
 
-const reservationFields = [ // Define valid fields for a reservation.
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+const service = require("./reservations.service");
+
+const reservationFields = [ 
   "first_name",
   "last_name",
   "mobile_number",
@@ -56,7 +56,7 @@ function validReservation(req, res, next) { // Middleware to validate a reservat
     }
   });
 
-  next(); // Move to the next middleware or route handler.
+  next(); 
 }
 
 function notTuesday(req, res, next) { // Middleware to check if reservation is not on Tuesday.
@@ -67,7 +67,7 @@ function notTuesday(req, res, next) { // Middleware to check if reservation is n
   if (date.getDay() === 2) { // Check if it's Tuesday (day 2).
     return next({ status: 400, message: "Location is closed on Tuesdays" });
   }
-  next(); // Move to the next middleware or route handler.
+  next(); 
 }
 
 function futuristic(req, res, next) { // Middleware to check if the reservation date is in the future.
@@ -76,7 +76,7 @@ function futuristic(req, res, next) { // Middleware to check if the reservation 
   if (date < today) { // Compare with the current date.
     return next({ status: 400, message: "Must be a future date" });
   }
-  next(); // Move to the next middleware or route handler.
+  next(); 
 }
 
 function isOpen(req, res, next) { // Middleware to check if reservation time is within business hours.
@@ -94,7 +94,7 @@ function isOpen(req, res, next) { // Middleware to check if reservation time is 
       message: "Reservation must be made within business hours",
     });
   }
-  next(); // Move to the next middleware or route handler.
+  next(); 
 }
 
 function isBooked(req, res, next) { // Middleware to check if a new reservation has valid status.
@@ -107,7 +107,7 @@ function isBooked(req, res, next) { // Middleware to check if a new reservation 
       message: `New reservation can not have ${status} status.`,
     });
   }
-  next(); // Move to the next middleware or route handler.
+  next(); 
 }
 
 function isValidStatus(req, res, next) { // Middleware to validate reservation status.
@@ -116,7 +116,7 @@ function isValidStatus(req, res, next) { // Middleware to validate reservation s
   if (!validStatus.includes(status)) { // Check if status is unknown.
     return next({ status: 400, message: "Status unknown." });
   }
-  next(); // Move to the next middleware or route handler.
+  next(); 
 }
 
 function finished(req, res, next) { // Middleware to check if a reservation is already finished.
@@ -127,7 +127,7 @@ function finished(req, res, next) { // Middleware to check if a reservation is a
       message: "Cannot change a reservation with a finished status.",
     });
   }
-  next(); // Move to the next middleware or route handler.
+  next(); 
 }
 
 const reservationExists = async (req, res, next) => { // Middleware to check if a reservation exists.
@@ -184,7 +184,7 @@ async function modify(req, res, next) { // Modify an existing reservation.
   res.json({ data: reservation });
 }
 
-module.exports = { // Export middleware and CRUD functions.
+module.exports = {
   list: asyncErrorBoundary(list),
   create: [
     asyncErrorBoundary(validReservation), notTuesday, futuristic, isOpen, isBooked, asyncErrorBoundary(create),

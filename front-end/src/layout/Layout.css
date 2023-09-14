@@ -1,4 +1,17 @@
 .side-bar {
-  background-color: #393a44;
-  min-width: 200px;
+  background-color: #20322f;
+  min-width: 300px;
+  height: 100vh;
+}
+.btn {
+  margin-right: 5px;
+}
+thead {
+  background-color: #8cdccf;
+}
+tr:hover {
+  background-color: #8cdccf;
+}
+body {
+  background-color: #56877f;
 }
