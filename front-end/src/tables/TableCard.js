@@ -4,7 +4,7 @@ export default function TableCard({ changeHandler, formData }) {
   return (
     <>
       <form id="tableForm">
-        <div className="form-row mb-3">
+        <div className="form-row table-form mb-3">
           <div className="col">
             <label className="form-label" htmlFor="table_name">
               Table Name

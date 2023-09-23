@@ -2,7 +2,7 @@ export default function ReservationsCard({changeHandler, formData}){
   return (
     <>
       <form id="reservationCard">
-        <div className="form-row">
+        <div className="res-form">
           <div className="col-md">
             <label className="form-label" htmlFor="first_name">
               First Name
@@ -18,6 +18,7 @@ export default function ReservationsCard({changeHandler, formData}){
               value={formData.first_name}
             />
           </div>
+          <h></h>
           <div className="col-md">
             <label className="form-label" htmlFor="last_name">
               Last Name
@@ -49,8 +50,7 @@ export default function ReservationsCard({changeHandler, formData}){
               value={formData.mobile_number}
             />
           </div>
-        </div>
-        <div className="form-row mt-3 mb-3">
+        
           <div className="col-sm">
             <label className="form-label" htmlFor="reservation_date">
               Date

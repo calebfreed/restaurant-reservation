@@ -60,7 +60,7 @@ function Dashboard({ date }) {
   
   return (
     <main>
-      <h2>Dashboard</h2>
+      <h2 className="whitetext">Dashboard</h2>
       <div className="d-md-flex mb-3">
       <button
           type="button"
@@ -83,7 +83,7 @@ function Dashboard({ date }) {
         >
           Next
         </button>
-        <h4 className="mb-0">Reservations for: {date}</h4>
+        <h4 className="mb-0 whitetext">Reservations for: {date}</h4>
       </div>
       <ErrorAlert error={reservationsError} />
       <ErrorAlert error={tablesError} />

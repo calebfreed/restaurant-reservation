@@ -75,7 +75,7 @@ export default function Search() {
           </div>
         </div>
       ) : (
-        <h1>Search</h1>
+        <h1 className="whitetext">Search</h1>
       )}
       <ErrorAlert error={foundReservationsError} />
       {displayResults ? (
@@ -85,7 +85,7 @@ export default function Search() {
         />
       ) : (
         <div className="row">
-          <div className="col">
+          <div className="col table-form">
               <form id="searchForm">
                 <div className="form-row">
                   <div className="col">

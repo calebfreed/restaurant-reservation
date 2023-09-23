@@ -20,40 +20,36 @@ function Menu() {
             <h1>Periodic Tables</h1>
           </div>
         </Link>
-        <hr className="sidebar-divider my-0" />
-        <ul className="nav navbar-nav text-white" id="accordionSidebar">
-          <li className="nav-item">
+        <div className="row">
+          
             <Link className="nav-link" to="/dashboard">
               <span className="oi oi-dashboard" />
               &nbsp;Dashboard
             </Link>
-          </li>
-          <li className="nav-item">
+          
             <Link className="nav-link" to="/search">
               <span className="oi oi-magnifying-glass" />
               &nbsp;Search
             </Link>
-          </li>
-          <li className="nav-item">
+          
             <Link className="nav-link" to="/reservations/new">
               <span className="oi oi-plus" />
               &nbsp;New Reservation
             </Link>
-          </li>
-          <li className="nav-item">
+          
             <Link className="nav-link" to="/tables/new">
               <span className="oi oi-layers" />
               &nbsp;New Table
             </Link>
-          </li>
-        </ul>
-        <div className="text-center d-none d-md-inline">
-          <button
+          
+          <div className="text-center d-none d-md-inline">
+            <button
             className="btn rounded-circle border-0"
             id="sidebarToggle"
             type="button"
-          />
-        </div>
+            />
+            </div>
+            </div>
       </div>
     </nav>
   );

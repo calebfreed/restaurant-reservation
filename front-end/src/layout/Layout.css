@@ -1,17 +1,28 @@
-.side-bar {
-  background-color: #20322f;
-  min-width: 300px;
-  height: 100vh;
+.navbar{
+  background-color: navy
 }
 .btn {
   margin-right: 5px;
 }
+.res-form{
+  max-width: 300px
+}
+.table-form{
+  max-width: 500px;
+}
+.form-label{
+  color: white
+}
+.whitetext{
+  color: white
+}
 thead {
-  background-color: #8cdccf;
+  background-color: gray;
 }
 tr:hover {
-  background-color: #8cdccf;
+  background-color: darkgray;
 }
 body {
-  background-color: #56877f;
+  background-color: #4b4b4b;
 }
+
