@@ -75,7 +75,7 @@ export default function Search() {
           </div>
         </div>
       ) : (
-        <h1 className="whitetext">Search</h1>
+        <h1 className="">Search</h1>
       )}
       <ErrorAlert error={foundReservationsError} />
       {displayResults ? (

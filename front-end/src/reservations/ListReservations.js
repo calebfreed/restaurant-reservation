@@ -78,7 +78,7 @@ export default function ListReservations({ reservations, cancelHandler }) {
             ))
           ) : (
             <tr>
-              <td className="whitetext" colSpan="6">No reservations found</td>
+              <td className="" colSpan="6">No reservations found</td>
             </tr>
           )}
         </tbody>

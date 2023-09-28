@@ -43,7 +43,7 @@ export default function CreateTable() {
 
   return (
     <div className="centered-content">
-      <h1 className="whitetext">Create Table</h1>
+      <h1 className="">Create Table</h1>
       <ErrorAlert error={tableError} />
       <TableCard changeHandler={changeHandler} formData={formData} />
       <button className="btn btn-secondary mx-1 mr-2" onClick={history.goBack}>

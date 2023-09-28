@@ -47,7 +47,7 @@ export default function CreateReservations() {
 
   return (
     <>
-      <h1 className="whitetext">Create Reservation</h1>
+      <h1 className="">Create Reservation</h1>
       <ErrorAlert error={reservationsError} />
       <ReservationsCard changeHandler={changeHandler} formData={formData}  />
       <button className="btn btn-secondary mr-2 my-4 mx-3" onClick={history.goBack}>
