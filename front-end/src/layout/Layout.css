@@ -17,10 +17,10 @@
   color: white
 }
 thead {
-  background-color: gray;
+  background-color: white;
 }
 tr:hover {
-  background-color: darkgray;
+  background-color: white;
 }
 body {
   background-color: white;
