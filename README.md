@@ -31,8 +31,8 @@ A full-stack app built using:
 ### Dashboard
 
 - Defaults to displaying a list of booked (or seated) reservations for the current date.  
-- Navigation buttons: `Previous Day`, `Today`, & `Next Day` are available for changing the date displayed by the dashboard.
-- All tables (free or occupied) are also diplayed here.
+- Navigation buttons: `Previous`, `Today`, & `Next` are available for changing the date displayed by the dashboard.
+- All tables are also diplayed here.
 
 ---
 
