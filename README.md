@@ -1,7 +1,6 @@
 # Thinkful Capstone: Restaurant Reservation
 
-> Live app is available here:  [https://periodic-tables-frontend--as.herokuapp.com/dashboard
-](https://restaurant-reservation-xs01.onrender.com/dashboard)
+> Live app is available here: https://restaurant-reservation-xs01.onrender.com/dashboard
 > 
 A full-stack app built using:
 - HTML
