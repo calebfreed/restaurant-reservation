@@ -34,8 +34,6 @@ A full-stack app built using:
 - Navigation buttons: `Previous Day`, `Today`, & `Next Day` are available for changing the date displayed by the dashboard.
 - All tables (free or occupied) are also diplayed here.
 
-![dashboard](./screenshots/dashboard.png)
-
 ---
 
 ### Menu
@@ -43,28 +41,20 @@ A full-stack app built using:
 The menu provides options to:
 1. Search for a reservation
 
-![menuSearch](./screenshots/menuSearch.png)
-
 2. Create a new reservation 
-
-![menuNewReservation](./screenshots/menuNewReservation.png)
 
 3. Create a new table
 
-![menuNewTable](./screenshots/menuNewTable.png)
-
+4. Return to the dashboard
+   
 ---
 
 ### Search
 
 1. Enter the phone number for the reservation.
-1. Click `find`.
-
-![search](./screenshots/search.png)
+2.  Click `find`.
 
 This will display any matching results.
-
-![searched](./screenshots/searched.png)
 
 ---
 
@@ -73,16 +63,12 @@ This will display any matching results.
 1. Fill out the form with the reservation information.
 1. Click `submit`.
 
-![newReservation](./screenshots/newReservation.png)
-
 ---
 
 ### New Table
 
 1. Fill out the form with the table information.
 1. Click `submit`.
-
-![newTable](./screenshots/newTable.png)
 
 ---
 
@@ -92,11 +78,7 @@ This will display any matching results.
 1. Select a table from the drop-down menu.
 1. Click `submit` to seat the reservation at the selected table.
 
-![seat](./screenshots/seat.png)
-
-Once a reservation is seated, the reservation status will change from `booked` to `seated`.
-
-![seated](./screenshots/seated.png)
+Once a reservation is seated, the reservation status will change from `free` to `occupied`.
 
 ---
 
@@ -105,9 +87,6 @@ Once a reservation is seated, the reservation status will change from `booked` t
 1. Click `finish` on the table that has finished.
 1. Click `OK` on the confirmation window that pops-up.
 
-![finishing](./screenshots/finishing.png)
-
-Note: finished reservations no longer display in the dashboard.
 
 ---
 
@@ -117,18 +96,12 @@ Note: finished reservations no longer display in the dashboard.
 1. Edit any of the reservation information as needed.
 1. Click `submit` to save the updated reservation information.
 
-![editing](./screenshots/editing.png)
-
 ---
 
 ### Cancelling a Reservation
 
 1. Click `cancel` on the reservation you'd like to cancel.
 1. Click `OK` on the confirmation window that pops-up.
-
-![cancelling](./screenshots/cancelling.png)
-
-Note: cancelled reservations no longer display in the dashboard.
 
 ---
 
