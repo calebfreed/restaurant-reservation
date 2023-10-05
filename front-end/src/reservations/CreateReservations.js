@@ -45,12 +45,16 @@ export default function CreateReservations() {
     return () => abortController.abort();
   };
 
+  const goToDashboard = () => {
+    history.push('/dashboard');
+  };
+
   return (
     <>
       <h1 className="whitetext">Create Reservation</h1>
       <ErrorAlert error={reservationsError} />
       <ReservationsCard changeHandler={changeHandler} formData={formData}  />
-      <button className="btn btn-secondary mr-2 my-4 mx-3" onClick={history.goBack}>
+      <button className="btn btn-secondary mr-2 my-4 mx-3" onClick={goToDashboard}>
         Cancel
       </button>
       <button
