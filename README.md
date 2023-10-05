@@ -54,8 +54,6 @@ The menu provides options to:
 1. Enter the phone number for the reservation.
 2.  Click `find`.
 
-This will display any matching results.
-
 ---
 
 ### New Reservation
@@ -78,15 +76,12 @@ This will display any matching results.
 1. Select a table from the drop-down menu.
 1. Click `submit` to seat the reservation at the selected table.
 
-Once a reservation is seated, the reservation status will change from `free` to `occupied`.
-
 ---
 
 ### Finishing a Reservation
 
 1. Click `finish` on the table that has finished.
 1. Click `OK` on the confirmation window that pops-up.
-
 
 ---
 
