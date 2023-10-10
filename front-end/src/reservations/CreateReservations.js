@@ -19,9 +19,16 @@ export default function CreateReservations() {
   const [formData, setFormData] = useState({ ...initialForm });
   const [reservationsError, setReservationsError] = useState(null);
 
+  const checkIfAllValidCharacters = (phoneNumber) => {
+    if (/.*[^\d-].*/.test(phoneNumber)) {
+      return false;
+    }
+    return true;
+  };
+
   const changeHandler = ({ target }) => {
     let value = target.value;
-    if (target.name === "people") {
+    if (target.name === "people" || checkIfAllValidCharacters(target.value)) {
       value = Number(value);
     }
     setFormData({
@@ -45,12 +52,16 @@ export default function CreateReservations() {
     return () => abortController.abort();
   };
 
+  const goToDashboard = () => {
+    history.push('/dashboard');
+  };
+
   return (
     <>
       <h1 className="">Create Reservation</h1>
       <ErrorAlert error={reservationsError} />
       <ReservationsCard changeHandler={changeHandler} formData={formData}  />
-      <button className="btn btn-secondary mr-2 my-4 mx-3" onClick={history.goBack}>
+      <button className="btn btn-secondary mr-2 my-4 mx-3" onClick={goToDashboard}>
         Cancel
       </button>
       <button
