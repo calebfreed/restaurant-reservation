@@ -19,23 +19,19 @@ export default function CreateReservations() {
   const [formData, setFormData] = useState({ ...initialForm });
   const [reservationsError, setReservationsError] = useState(null);
 
-  const checkIfAllValidCharacters = (phoneNumber) => {
-    if (/.*[^\d-].*/.test(phoneNumber)) {
-      return false;
-    }
-    return true;
-  };
-
   const changeHandler = ({ target }) => {
     let value = target.value;
-    if (target.name === "people" || checkIfAllValidCharacters(target.value)) {
+    if (target.name === "people") {
       value = Number(value);
+    } else if (target.name === "mobile_number") {
+      value = value.replace(/[^\d-]/, "");
     }
     setFormData({
       ...formData,
       [target.name]: value,
     });
   };
+  
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -75,5 +71,3 @@ export default function CreateReservations() {
     </>
   );
 }
-
-
