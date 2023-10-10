@@ -27,6 +27,8 @@ export default function EditReservations() {
     let value = target.value;
     if (target.name === "people") {
       value = Number(value);
+    } else if (target.name === "mobile_number") {
+      value = value.replace(/[^\d-]/, "");
     }
     setFormData({
       ...formData,
