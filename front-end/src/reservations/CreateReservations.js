@@ -19,9 +19,16 @@ export default function CreateReservations() {
   const [formData, setFormData] = useState({ ...initialForm });
   const [reservationsError, setReservationsError] = useState(null);
 
+  const checkIfAllValidCharacters = (phoneNumber) => {
+    if (/.*[^\d-].*/.test(phoneNumber)) {
+      return false;
+    }
+    return true;
+  };
+
   const changeHandler = ({ target }) => {
     let value = target.value;
-    if (target.name === "people") {
+    if (target.name === "people" || checkIfAllValidCharacters(target.value)) {
       value = Number(value);
     }
     setFormData({
